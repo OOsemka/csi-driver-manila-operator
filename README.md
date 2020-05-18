@@ -66,7 +66,7 @@ oc create -n manila-test -f examples/nfs/dynamic-provisioning/pod.yaml
 Once the pvc and pod are up and running, it will look like this:
 
 ```sh
-$ oc get pod new-nfs-share-pod
+$ oc get pod -n manila-test new-nfs-share-pod
 NAME                READY   STATUS    RESTARTS   AGE
 new-nfs-share-pod   1/1     Running   0          106s
 
@@ -110,3 +110,9 @@ TBD
 ```sh
 oc delete -f deploy/operator.yaml -f deploy/crds/manilacsi.openshift.io_v1alpha1_manilacsi_cr.yaml -f deploy/role.yaml -f deploy/role_binding.yaml -f deploy/service_account.yaml -f deploy/crds/manilacsi.openshift.io_manilacsis_crd.yaml -f deploy/namespace.yaml
 ```
+
+### Troubleshooting
+
+``` error: unable to recognize "deploy/crds/manilacsi.openshift.io_v1alpha1_manilacsi_cr.yaml": no matches for kind "ManilaCSI" in version "manilacsi.openshift.io/v1alpha1" ```
+
+Just re-run the same oc apply command
